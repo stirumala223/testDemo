@@ -1,0 +1,55 @@
+<template>
+    <div class="slds-var-p-around_small">
+        <lightning-card>
+        <div class="slds-container_fluid image">
+          
+           <img src={product.ImageUrl__c}>
+        </div>
+    
+        <h1 class="slds-var-p-around_xx-small slds-var-m-top_x-small slds-truncate slds-text-title_caps bold-text">
+            {product.Name}
+        </h1>
+        <h2 class="slds-var-p-around_xx-small slds-text-body_regular">
+            <lightning-layout>
+                <lightning-layout-item size="8" class="slds-var-p-right_xx-small">
+                   <!-- Price:&nbsp;-->
+                    <lightning-formatted-number value={product.Display_Price__c} format-style="currency"
+                        currency-code="INR">
+                    </lightning-formatted-number>
+                </lightning-layout-item>
+               <!-- <lightning-layout-item size="4" class="slds-var-p-right_xx-small bold-text">
+                    Total:&nbsp;
+                    <lightning-formatted-number value={totalPrice} format-style="currency" currency-code="INR">
+                    </lightning-formatted-number>
+                </lightning-layout-item> -->
+            </lightning-layout>
+        </h2>
+       <!-- <div class="slds-var-p-around_xx-small slds-text-body_small">
+            <lightning-formatted-rich-text value={product.ProductCode}>
+            </lightning-formatted-rich-text>
+        </div> --> 
+        <div class="slds-var-p-around_xx-small slds-text-body_small slds-container_fluid">
+            <lightning-layout>
+                <lightning-layout-item size="5" class="slds-var-p-right_xx-small">
+                   <lightning-input step="1" variant="label-hidden" type="number" value={quantity} label="Quantity"
+                        onchange={handleChange}>  
+
+                    </lightning-input>
+                </lightning-layout-item>
+            </lightning-layout>
+        </div>   
+        <div class="slds-var-p-around_xx-small slds-text-body_small slds-container_fluid">
+            <lightning-layout>
+                <lightning-layout-item size="12" class="slds-var-p-left_xx-small">
+                   <lightning-button if:false={isAddedToCart} variant="success" label="Add to cart" title="Add to cart"
+                        onclick={handleAddToCart}>
+                    </lightning-button>  
+                    <lightning-button if:true={isAddedToCart} variant="destructive" label="Remove" title="Remove"
+                        onclick={handleRemoveFromCart}>
+                    </lightning-button>
+                </lightning-layout-item> 
+            </lightning-layout>
+        </div>
+    </lightning-card>
+        </div>
+</template>
